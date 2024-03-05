@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { requestAsyncStorage } from "next/dist/client/components/request-async-storage.external";
 import { NextResponse } from "next/server";
+import { protectedPaths } from "./lib/constant";
 
 export async function middleware(request) {
   let response = NextResponse.next({
@@ -63,8 +64,10 @@ export async function middleware(request) {
     }
     return response;
   } else {
-    if (url.pathname === "/create" || url.pathname === "/profile") {
-      return NextResponse.redirect(new URL("/", request.url));
+    if (protectedPaths.includes(url.pathname)) {
+      return NextResponse.redirect(
+        new URL("/auth?next=" + url.pathname, request.url)
+      );
     }
   }
   return response;

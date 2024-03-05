@@ -1,20 +1,24 @@
-'use client'
+"use client";
 import { KeySquare } from "lucide-react";
 import React from "react";
 import { Github } from "lucide-react";
 import Image from "next/image";
 import googleIcon from "@/public/icons/google-icon.svg";
 import createSupabaseClient from "@/lib/supabase/client";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
+  const params = useSearchParams();
+  const next = params.get("next");
+
   const handleOauthLogin = (provider) => {
     const supabase = createSupabaseClient();
     supabase.auth.signInWithOAuth({
-        provider,
-        options: {
-            redirectTo: location.origin + "/auth/callback"
-        }
-    })
+      provider,
+      options: {
+        redirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next || '/')}`,
+      },
+    });
   };
 
   return (
