@@ -1,38 +1,77 @@
 import { createServerClient } from "@supabase/ssr";
+import { requestAsyncStorage } from "next/dist/client/components/request-async-storage.external";
 import { NextResponse } from "next/server";
 
 export async function middleware(request) {
-  const url = request.nextUrl.clone();
-  const path = url.pathname;
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  });
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+
   const supabase = createServerClient(supabaseUrl, supabaseKey, {
     cookies: {
       get(name) {
         return request.cookies.get(name)?.value;
       },
+      set(name, value, options) {
+        request.cookies.set({
+          name,
+          value,
+          ...options,
+        });
+        response = NextResponse.next({
+          request: {
+            headers: request.headers,
+          },
+        });
+        response.cookies.set({
+          name,
+          value,
+          ...options,
+        });
+      },
+      remove(name, options) {
+        request.cookies.set({
+          name,
+          value: "",
+          ...options,
+        });
+        response = NextResponse.next({
+          request: {
+            headers: request.headers,
+          },
+        });
+        response.cookies.set({
+          name,
+          value: "",
+          ...options,
+        });
+      },
     },
   });
 
-  // check user session
-  const { user } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getSession();
+  const url = new URL(request.url);
 
-  // protected routes redirection
-  if (!user && (path === '/profile' || path === '/create')) {
-    url.pathname = '/login';
-    return NextResponse.redirect(url);
+  if (data.session) {
+    if (url.pathname === "/auth") {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    return response;
+  } else {
+    if (url.pathname === "/create" || url.pathname === "/profile") {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
   }
-
-  // redirect logged in users to index
-  if (user && path === '/login') {
-    url.pathname = '/'; 
-    return NextResponse.redirect(url);
-  }
-
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
-  matcher: ['/profile', '/create', '/login'],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
 };

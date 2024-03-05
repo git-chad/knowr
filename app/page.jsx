@@ -10,29 +10,8 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-neutral-900 to-neutral-950">
-      <Container className='py-32'>
+      <Container className="py-32">
         <h1 className="font-bold text-8xl">Knowr</h1>
-        {/* <PostResource />
-      {resources.map((resource, index) => (
-        <div key={index}>
-          <p>{resource.title}</p>
-          <p>{resource.description}</p>
-          <Link href={resource.link} target="_blank">
-            {resource.link}
-          </Link>
-          {resource.image && (
-            <Image
-              src={resource.image}
-              alt={resource.title}
-              width="100"
-              height="100"
-            />
-          )}
-          {resource.tags.map((tag, index) => (
-            <p className="border border-indigo-500 rounded-lg text-center text-xs" key={index}>{tag}</p>
-          ))}
-        </div>
-      ))} */}
       </Container>
     </main>
   );
