@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProfilePage = () => {
   return (
-    <div>this is the profile page</div>
+    <div className='mesh min-h-screen text-white'>this is the profile page</div>
   )
 }
 

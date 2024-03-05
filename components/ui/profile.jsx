@@ -5,22 +5,27 @@ import useUser from "@/app/hooks/useUser";
 import Image from "next/image";
 import createSupabaseClient from "@/lib/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { protectedPaths } from "@/lib/constant";
 
 const Profile = () => {
   const { data, isFetching } = useUser();
   const queryClient = useQueryClient();
   const router = useRouter();
+  const pathname = usePathname();
 
   if (isFetching) {
-    return <></>; 
+    return <></>;
   }
 
   const handleLogout = async () => {
     const supabase = createSupabaseClient();
     await supabase.auth.signOut();
     queryClient.clear();
-    router.refresh(); 
+    router.refresh();
+    if (protectedPaths.includes(pathname)) {
+      router.replace("/auth?next=" + pathname);
+    }
   };
 
   return (
@@ -37,7 +42,7 @@ const Profile = () => {
         <>
           {data?.image_url ? (
             <Image
-            onClick={handleLogout}
+              onClick={handleLogout}
               src={data.image_url || ""}
               width={128}
               height={0}
@@ -45,7 +50,10 @@ const Profile = () => {
               alt={data.display_name || ""}
             />
           ) : (
-            <div onClick={handleLogout} className="cursor-pointer capitalize w-10 h-10 bg-gradient-to-br ring-neutral-800 from-neutral-600 to-neutral-700 flex justify-center items-center rounded-full leading-none">
+            <div
+              onClick={handleLogout}
+              className="cursor-pointer capitalize w-10 h-10 bg-gradient-to-br ring-neutral-800 from-neutral-600 to-neutral-700 flex justify-center items-center rounded-full leading-none"
+            >
               <span className="font-semibold text-xl">@</span>
             </div>
           )}
