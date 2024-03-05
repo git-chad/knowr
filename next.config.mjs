@@ -4,8 +4,10 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "logowik.com" },
       { protocol: "https", hostname: "www.chocogram.com.au" },
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
 };
 
 export default nextConfig;
+

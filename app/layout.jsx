@@ -1,5 +1,7 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import QueryProvider from "@/components/providers/query-provider";
+import Navbar from "@/components/ui/navbar";
 
 export const metadata = {
   title: "Knowr",
@@ -9,7 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>{children}</body>
+      <body className={GeistSans.className}>
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
+      </body>
     </html>
   );
 }
