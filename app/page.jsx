@@ -1,17 +1,24 @@
-import Link from "next/link";
 import Image from "next/image";
-import supabase from "@/lib/supabase";
-import PostResource from "@/components/ui/post-resource";
 import Container from "@/components/ui/container";
+import koko from "@/public/illustrations/koko.svg";
+import Resources from "@/components/ui/resources";
 
-export default async function Home() {
-  const { data: resources } = await supabase.from("resources").select("*");
-  // console.log(resources, "resources");
-
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-neutral-900 to-neutral-950">
-      <Container className="py-32">
-        <h1 className="font-bold text-8xl">Knowr</h1>
+    <main className="mesh2 flex flex-col items-center justify-between bg-gradient-to-b from-neutral-900 to-neutral-950 text-neutral-100">
+      <Container className="w-full py-64 flex justify-between">
+        <div className=" flex flex-col justify-between">
+          <h1 className="font-black text-[128px] leading-none">Knowr</h1>
+          <h2 className="text-2xl w-[35ch]">
+            Your go-to database for web design resources of all types. Curated &
+            perfected by <b>this little guy</b>.
+          </h2>
+        </div>
+
+        <Image src={koko} />
+      </Container>
+      <Container className="w-full flex">
+        <Resources />
       </Container>
     </main>
   );
