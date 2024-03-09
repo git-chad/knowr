@@ -15,7 +15,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <Image src={koko} />
+        <Image src={koko} alt="koko the fuzzball"/>
       </Container>
       <Container className="w-full flex">
         <Resources />

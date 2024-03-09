@@ -13,7 +13,7 @@ const Card = ({ resource }) => {
       />
       <div className="mt-2 flex justify-between">
         <p className="font-semibold text-xl">{resource.title}</p>
-        <div className="space-x-0.5">
+        <div className="space-x-1">
           {resource.tags.map((tag, index) => (
             <span
               key={index}
@@ -24,7 +24,7 @@ const Card = ({ resource }) => {
           ))}
         </div>
       </div>
-      <p>{resource.description}</p>
+      <p className="mt-2 text-sm">{resource.description}</p>
     </Link>
   );
 };

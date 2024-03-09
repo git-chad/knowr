@@ -2,9 +2,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "logowik.com" },
-      { protocol: "https", hostname: "www.chocogram.com.au" },
-      { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      { protocol: "https", hostname: "**" },
     ],
   },
 };

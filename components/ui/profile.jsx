@@ -7,6 +7,7 @@ import createSupabaseClient from "@/lib/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { usePathname, useRouter } from "next/navigation";
 import { protectedPaths } from "@/lib/constant";
+import NavLinks from "./navlinks";
 
 const Profile = () => {
   const { data, isFetching } = useUser();
@@ -41,6 +42,8 @@ const Profile = () => {
       ) : (
         <>
           {data?.image_url ? (
+            <div className="flex items-center space-x-4">
+            <NavLinks/>
             <Image
               onClick={handleLogout}
               src={data.image_url || ""}
@@ -49,6 +52,7 @@ const Profile = () => {
               className="cursor-pointer rounded-full w-10 h-10 animate-fade-in duration-300 ring-2 ring-neutral-800"
               alt={data.display_name || ""}
             />
+            </div>
           ) : (
             <div
               onClick={handleLogout}
