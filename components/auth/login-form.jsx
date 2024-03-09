@@ -1,7 +1,7 @@
 "use client";
 import { KeySquare } from "lucide-react";
 import React from "react";
-// import { Github } from "lucide-react";
+import { Github } from "lucide-react";
 import Image from "next/image";
 import googleIcon from "@/public/icons/google-icon.svg";
 import createSupabaseClient from "@/lib/supabase/client";
@@ -32,7 +32,7 @@ const LoginForm = () => {
         onClick={() => handleOauthLogin("github")}
         className="border border-neutral-700 flex items-center justify-center px-5 py-1 rounded-md text-sm mt-8"
       >
-        {/* <Github className="w-6 h-6 mr-2" /> */}
+        <Github className="w-6 h-6 mr-2" />
         Join via Github
       </button>
       <button
