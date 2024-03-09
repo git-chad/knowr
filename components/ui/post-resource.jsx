@@ -98,7 +98,7 @@ const PostResource = () => {
         />
         <div className="flex justify-between">
           <label className="text-sm">Tags</label>
-          <span className="text-sm text-neutral-500">Separate &apos;em with a comma if you're writing a couple</span>
+          <span className="text-sm text-neutral-500">Separate &apos;em with a comma if you&apos;re writing a couple</span>
         </div>
         <input
           type="text"
