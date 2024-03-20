@@ -1,10 +1,12 @@
 import React from "react";
 import createSupabaseClient from "@/lib/supabase/client";
+import createSupabaseServer from "@/lib/supabase/server";
 import Card from "../resources/card";
 
 const Resources = async () => {
-  const supabase = createSupabaseClient();
-  const { data: resources } = await supabase.from("resources").select("*");
+  // const supabase = createSupabaseClient();
+  const supabase = createSupabaseServer()
+  const { data: resources } = await supabase.from("resources").select("*").order("created_at", { ascending: false });
   console.log(resources, "resources");
 
   return (

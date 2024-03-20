@@ -11,17 +11,32 @@ const AuthPageContent = () => {
   const params = useSearchParams();
   const next = params.get("next");
 
+  const getURL = () => {
+    let url =
+      process?.env?.NEXT_PUBLIC_SITE_URL ?? 
+      process?.env?.NEXT_PUBLIC_VERCEL_URL ?? 
+      'http://localhost:3000/'
+
+    url = url.includes('http') ? url : `https://${url}`
+    url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+    return url
+  }
+
+  // redirectTo: `${
+  //   window.location.origin
+  // }/auth/callback?next=${encodeURIComponent(next || "/")}`,
+
   const handleOauthLogin = (provider) => {
     const supabase = createSupabaseClient();
     supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${
-          window.location.origin
-        }/auth/callback?next=${encodeURIComponent(next || "/")}`,
+        redirectTo: getURL() + "auth/callback?next=" + encodeURIComponent(next || "/"),
       },
     });
   };
+
+  console.log(getURL(), 'URL');
 
   return (
     <Container className="py-32 flex flex-col">
