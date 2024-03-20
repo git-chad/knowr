@@ -26,6 +26,10 @@ const AuthPageContent = () => {
   //   window.location.origin
   // }/auth/callback?next=${encodeURIComponent(next || "/")}`,
 
+  // redirectTo: getURL() + "auth/callback?next=" + encodeURIComponent(next || "/"),
+
+  // during production, remember to switch the default redirect url in supabase -> URL config
+
   const handleOauthLogin = (provider) => {
     const supabase = createSupabaseClient();
     supabase.auth.signInWithOAuth({

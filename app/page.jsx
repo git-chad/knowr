@@ -5,7 +5,7 @@ import Resources from "@/components/ui/resources";
 
 export default function Home() {
   return (
-    <main className="mesh2 flex flex-col items-center justify-between bg-gradient-to-b from-neutral-900 to-neutral-950 text-neutral-100">
+    <main className="mesh flex flex-col items-center justify-between bg-gradient-to-b from-neutral-900 to-neutral-950 text-neutral-100">
       <Container className="w-full py-64 flex justify-between">
         <div className=" flex flex-col justify-between">
           <h1 className="font-black text-[128px] leading-none">Knowr</h1>

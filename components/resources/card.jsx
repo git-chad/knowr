@@ -4,12 +4,12 @@ import React from "react";
 
 const Card = ({ resource }) => {
   return (
-    <Link href={`/resources/${resource.slug}`}>
+    <Link className="h-max" href={`/resources/${resource.slug}`}>
       <Image
         src={resource.image}
         width={1000}
         height={0}
-        className="h-64 object-cover rounded-t-xl rounded-br-xl"
+        className="h-64 object-cover rounded-xl border-t border-x border-neutral-300/30"
       />
       <div className="mt-2 flex justify-between">
         <p className="font-semibold text-xl">{resource.title}</p>

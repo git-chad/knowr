@@ -31,7 +31,7 @@ const PostResource = () => {
       console.error("Error inserting data:", error.message);
     } else {
       console.log("Data inserted successfully:", data);
-      router.push('/')
+      router.push("/");
     }
   };
 
@@ -87,7 +87,12 @@ const PostResource = () => {
           className="bg-transparent border-b border-neutral-300 p-4"
           required
         />
-        <label className="text-sm">Image</label>
+        <div className="flex justify-between">
+          <label className="text-sm">Image URL</label>
+          <span className="text-sm text-neutral-500">
+            Image uploading is unsupported for now, oops!
+          </span>
+        </div>
         <input
           type="text"
           name="image"
@@ -98,7 +103,9 @@ const PostResource = () => {
         />
         <div className="flex justify-between">
           <label className="text-sm">Tags</label>
-          <span className="text-sm text-neutral-500">Separate &apos;em with a comma if you&apos;re writing a couple</span>
+          <span className="text-sm text-neutral-500">
+            Separate &apos;em with a comma if you&apos;re writing a couple
+          </span>
         </div>
         <input
           type="text"
