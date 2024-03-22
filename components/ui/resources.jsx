@@ -65,7 +65,7 @@ const Resources = () => {
         </div>
       </div>
       <div className="min-h-[50dvh]">
-        <div className="w-full grid grid-cols-3 gap-5">
+        <div className="w-full grid md:grid-cols-3 gap-5">
           {resources.map((resource, index) => (
             <Card key={index} resource={resource} />
           ))}

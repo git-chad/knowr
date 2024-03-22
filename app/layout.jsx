@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>
+      <body className={`${GeistSans.className} scrollbar-hide`}>
         <QueryProvider>
           <Navbar />
           {children}

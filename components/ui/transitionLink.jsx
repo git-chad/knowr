@@ -13,9 +13,9 @@ const TransitionLink = ({ href, label }) => {
   };
 
   return (
-    <button className="group text-neutral-100 transition duration-300 animate-fade-in" onClick={handleClick}>
+    <button className="group text-zinc-100 transition duration-300 animate-fade-in" onClick={handleClick}>
       {label}
-      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-[1px] bg-neutral-100"></span>
+      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-[1px] bg-zinc-100"></span>
     </button>
   );
 };

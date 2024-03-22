@@ -76,17 +76,18 @@
 }
 
 .mesh {
-  background-color: rgb(10 10 10);
+  background-color: rgb(15, 15, 20); 
   background-image: radial-gradient(
       at 89% 54%,
-      hsla(202, 6%, 32%, 0.1) 0px,
+      hsla(202, 20%, 32%, 0.1) 0px,
       transparent 50%
     ),
-    radial-gradient(at 15% 91%, rgb(23 23 23) 0px, transparent 50%),
-    radial-gradient(at 97% 91%, rgb(38 38 38) 0px, transparent 50%),
-    radial-gradient(at 61% 72%, rgb(64 64 64) 0px, transparent 50%),
-    radial-gradient(at 54% 65%, rgb(12 10 9) 0px, transparent 50%);
+    radial-gradient(at 15% 91%, rgb(25, 25, 35) 0px, transparent 50%), 
+    radial-gradient(at 97% 91%, rgb(40, 40, 50) 0px, transparent 50%), 
+    radial-gradient(at 61% 72%, rgb(70, 70, 80) 0px, transparent 50%), 
+    radial-gradient(at 54% 65%, rgb(18, 17, 20) 0px, transparent 50%); 
 }
+
 
 .mesh2 {
   background-color: rgb(10 10 10);
@@ -98,6 +99,15 @@
     radial-gradient(at 23% 13%, hsla(202, 6%, 32%, 0.1) 0px, transparent 50%),
     radial-gradient(at 81% 40%, rgb(64 64 64) 0px, transparent 50%),
     radial-gradient(at 30% 38%, rgb(12 10 9) 0px, transparent 50%);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
 }
 
 ::-webkit-scrollbar {

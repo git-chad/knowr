@@ -34,10 +34,10 @@ const Profile = () => {
       {!data?.id ? (
         <Link
           href="/auth"
-          className="group text-neutral-100 transition duration-300 animate-fade-in"
+          className="group text-zinc-100 transition duration-300 animate-fade-in"
         >
           Sign in
-          <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-[1px] bg-neutral-100"></span>
+          <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-[1px] bg-zinc-100"></span>
         </Link>
       ) : (
         <>
@@ -49,14 +49,14 @@ const Profile = () => {
               src={data.image_url || ""}
               width={128}
               height={0}
-              className="cursor-pointer rounded-full w-10 h-10 animate-fade-in duration-300 ring-2 ring-neutral-800"
+              className="cursor-pointer rounded-full w-10 h-10 animate-fade-in duration-300 ring-2 ring-zinc-800"
               alt={data.display_name || ""}
             />
             </div>
           ) : (
             <div
               onClick={handleLogout}
-              className="cursor-pointer capitalize w-10 h-10 bg-gradient-to-br ring-neutral-800 from-neutral-600 to-neutral-700 flex justify-center items-center rounded-full leading-none"
+              className="cursor-pointer capitalize w-10 h-10 bg-gradient-to-br ring-zinc-800 from-zinc-600 to-zinc-700 flex justify-center items-center rounded-full leading-none"
             >
               <span className="font-semibold text-xl">@</span>
             </div>

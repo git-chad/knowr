@@ -1,23 +1,35 @@
-import Image from "next/image";
 import Container from "@/components/ui/container";
-import koko from "@/public/illustrations/koko.svg";
 import Resources from "@/components/ui/resources";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="mesh flex flex-col items-center justify-between text-neutral-100">
-      <Container className="w-full py-32 flex justify-between">
-        <div className=" flex flex-col justify-between">
-          <h1 className="font-black text-[128px] leading-none">Knowr</h1>
-          <h2 className="text-2xl w-[35ch]">
-            Your go-to database for web design resources of all types. Curated &
-            perfected by <b>this funny guy.</b>
-          </h2>
+    <main className="min-h-[100dvh] mesh flex flex-col items-center justify-between text-zinc-100">
+      <Container className="w-full flex justify-between pt-48 pb-24">
+        <div className=" flex flex-col justify-between w-full">
+          <h1 className="font-black text-2xl md:text-[128px] leading-none">
+            Knowr
+          </h1>
+          <div className="mt-40 md:mt-64 w-full flex justify-between items-end">
+            <h2 className="text-xs md:text-2xl md:w-[35ch]">
+              Your go-to database for web design resources of all types. Put
+              together with love by{" "}
+              <Link
+                href="https://github.com/git-chad"
+                target="_blank"
+                className="font-bold text-indigo-200"
+              >
+                @git-chad
+              </Link>
+              .
+            </h2>
+            <p className="text-xs md:text-base">
+              Submit your own resources by <b>signing in.</b>
+            </p>
+          </div>
         </div>
-
-        <Image src={koko} className="w-1/3" alt="koko the fuzzball"/>
       </Container>
-      <Container className="w-full flex pb-32">
+      <Container className="w-full flex md:pb-32">
         <Resources />
       </Container>
     </main>

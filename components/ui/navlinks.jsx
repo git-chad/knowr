@@ -13,9 +13,9 @@ const NavLinks = () => {
       <li>
         <TransitionLink href="/create" label="Create" />
       </li>
-      <li>
+      {/* <li>
         <TransitionLink href="/profile" label="Profile" />
-      </li>
+      </li> */}
     </ul>
   );
 };

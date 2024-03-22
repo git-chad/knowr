@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import createSupabaseClient from "@/lib/supabase/client";
-import koko from "@/public/illustrations/koko.svg";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const PostResource = () => {
@@ -31,7 +29,7 @@ const PostResource = () => {
       console.error("Error inserting data:", error.message);
     } else {
       console.log("Data inserted successfully:", data);
-      router.push("/");
+      router.push(`/resources/${formData.slug}`);
     }
   };
 
@@ -48,7 +46,7 @@ const PostResource = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-20">
+    <div className="grid md:grid-cols-2 gap-20">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <label className="text-sm">Title</label>
         <input
@@ -56,13 +54,13 @@ const PostResource = () => {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 p-4"
+          className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
         <div className="flex justify-between">
           <label className="text-sm">Description</label>
           <span
-            className={`text-sm text-neutral-500 ${
+            className={`text-xs md:text-sm text-zinc-500 ${
               charactersLeft < 70 ? "text-yellow-500/50" : ""
             } ${charactersLeft < 20 ? "text-red-500/50 animate-pulse" : ""}`}
           >
@@ -74,7 +72,7 @@ const PostResource = () => {
           name="description"
           value={formData.description}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 px-4 py-8 resize-none"
+          className="bg-transparent border-b border-zinc-300 px-4 py-8 resize-none"
           required
           maxLength={maxDescriptionLength}
         />
@@ -84,12 +82,12 @@ const PostResource = () => {
           name="link"
           value={formData.link}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 p-4"
+          className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
         <div className="flex justify-between">
           <label className="text-sm">Image URL</label>
-          <span className="text-sm text-neutral-500">
+          <span className="text-xs md:text-sm text-zinc-500">
             Image uploading is unsupported for now, oops!
           </span>
         </div>
@@ -98,12 +96,12 @@ const PostResource = () => {
           name="image"
           value={formData.image}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 p-4"
+          className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
         <div className="flex justify-between">
           <label className="text-sm">Tags</label>
-          <span className="text-sm text-neutral-500">
+          <span className="text-xs md:text-sm text-zinc-500">
             Separate &apos;em with a comma if you&apos;re writing a couple
           </span>
         </div>
@@ -112,7 +110,7 @@ const PostResource = () => {
           name="tags"
           value={formData.tags}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 p-4"
+          className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
         <label className="text-sm">Slugs</label>
@@ -121,26 +119,20 @@ const PostResource = () => {
           name="slug"
           value={formData.slug}
           onChange={handleChange}
-          className="bg-transparent border-b border-neutral-300 p-4"
+          className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
 
         <button
           type="submit"
-          className="bg-neutral-950/20 border self-end border-neutral-100 w-max px-12 py-1 rounded"
+          className="bg-zinc-950/20 border self-end border-zinc-100 w-full md:w-max px-12 py-2 md:py-1 rounded"
         >
           Submit
         </button>
       </form>
 
-      <div className="flex flex-col space-y-4 mt-20 ormt5?">
-        <div className="h-64 bg-neutral-500/10 object-cover rounded-t-xl rounded-br-xl overflow-hidden">
-          <Image
-            src={koko}
-            alt="hiding koko"
-            width={256}
-            className="mt-40 opacity-50"
-          />
+      <div className="hidden md:flex flex-col space-y-4 mt-20 ormt5?">
+        <div className="h-64 bg-zinc-500/10 object-cover rounded-t-xl rounded-br-xl overflow-hidden">
         </div>
         <div className="flex justify-between">
           <div className="text-lg font-bold">{formData.title}&nbsp;</div>
@@ -152,7 +144,7 @@ const PostResource = () => {
                 .map((tag, index) => (
                   <span
                     key={index}
-                    className="text-xs border ring-1 ring-neutral-500 rounded px-2"
+                    className="text-xs border ring-1 ring-zinc-500 rounded px-2"
                   >
                     {tag.trim()}
                   </span>
