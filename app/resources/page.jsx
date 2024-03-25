@@ -25,7 +25,7 @@ const ResourcesPage = async ({ searchParams }) => {
     <main
       className="mesh min-h-screen flex flex-col items-center justify-between text-zinc-100"
     >
-      <Container className="w-full py-48 flex flex-col justify-between">
+      <Container className="min-w-full min-h-full py-48 flex flex-col justify-between">
         <Searchbar />
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
           {resources &&

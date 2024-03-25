@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import createSupabaseClient from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const PostResource = () => {
   const supabase = createSupabaseClient();
@@ -18,8 +19,14 @@ const PostResource = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let link = formData.link;
+    if (link && !link.startsWith("https://")) {
+      link = `https://${link}`;
+    }
+
     const payload = {
       ...formData,
+      link: link,
       tags: formData.tags.split(",").map((tag) => tag.trim()),
     };
 
@@ -39,9 +46,23 @@ const PostResource = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "description" && value.length > maxDescriptionLength) return;
+
+    let newValue = value;
+
+    if (name === "title") {
+      const slug = value
+        .toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "");
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        slug: slug,
+      }));
+    }
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: newValue,
     }));
   };
 
@@ -113,7 +134,13 @@ const PostResource = () => {
           className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
-        <label className="text-sm">Slugs</label>
+
+        <div className="flex justify-between">
+          <label className="text-sm">Slugs</label>
+          <span className="text-xs md:text-sm text-zinc-500">
+            Auto-generated so nothing breaks
+          </span>
+        </div>
         <input
           type="text"
           name="slug"
@@ -122,7 +149,6 @@ const PostResource = () => {
           className="bg-transparent border-b border-zinc-300 p-4"
           required
         />
-
         <button
           type="submit"
           className="bg-zinc-950/20 border self-end border-zinc-100 w-full md:w-max px-12 py-2 md:py-1 rounded"
@@ -133,6 +159,14 @@ const PostResource = () => {
 
       <div className="hidden md:flex flex-col space-y-4 mt-20 ormt5?">
         <div className="h-64 bg-zinc-500/10 object-cover rounded-t-xl rounded-br-xl overflow-hidden">
+          {formData.image && (
+            <Image
+              src={formData.image}
+              width={256}
+              height={0}
+              className="w-full"
+            />
+          )}
         </div>
         <div className="flex justify-between">
           <div className="text-lg font-bold">{formData.title}&nbsp;</div>

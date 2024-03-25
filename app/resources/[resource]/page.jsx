@@ -45,7 +45,7 @@ const ResourcePage = () => {
         />
         <div className="flex flex-col md:flex-row justify-between items-end">
           <p className="mt-6 text-base md:text-xl md:text-balance">{resource[0].description}</p>
-          <a href={resource[0].link} target="_blank" className="p-2 mt-6 w-max border-x hover:underline hover:text-indigo-300 transition-all">Check it out at {resource[0].link}</a>
+          <a href={resource[0].link} target="_blank" className="p-2 mt-6 md:w-max border-x hover:underline hover:text-indigo-300 transition-all">Check it out at {resource[0].link}</a>
         </div>
       </Container>
     </main>

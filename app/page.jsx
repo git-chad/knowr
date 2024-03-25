@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         </div>
       </Container>
-      <Container className="w-full flex md:pb-32">
+      <Container className="w-full pb-16 flex md:pb-32">
         <Resources />
       </Container>
     </main>
