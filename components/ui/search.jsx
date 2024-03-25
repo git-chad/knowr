@@ -22,7 +22,7 @@ const Searchbar = () => {
     <div className="relative rounded shadow-sm mb-8">
       {isInputActive && (
         <p className="text-sm absolute -top-6 text-zinc-500 animate-fade-in duration-300 ease-in-out">
-          Try searching by name or tags (i.e: "library")
+          Try searching by name or tags (i.e: &quot;library&quot;)
         </p>
       )}
       <div className="pointer-events-none absolute inset-y-0 left-0 grid place-content-center">
