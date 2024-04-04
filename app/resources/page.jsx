@@ -8,7 +8,7 @@ const ResourcesPage = async ({ searchParams }) => {
   const supabase = createSupabaseServer();
   const search =
     typeof searchParams.search === "string" ? searchParams.search.trim() : "";
-  let query = supabase.from("resources").select("*");
+  let query = supabase.from("resources").select("*").order("created_at", { ascending: false });
 
   if (search) {
     query = query.textSearch("search_vector", search);
