@@ -5,13 +5,13 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-[100dvh] mesh flex flex-col items-center justify-between text-zinc-100">
-      <Container className="w-full flex justify-between pt-48 pb-24">
+      <Container className="w-full flex justify-between pt-32 pb-16">
         <div className=" flex flex-col justify-between w-full">
-          <h1 className="font-black text-2xl md:text-[128px] leading-none">
+          <h1 className="font-bold text-2xl md:text-[128px] leading-none">
             Knowr
           </h1>
           <div className="mt-40 md:mt-64 w-full flex justify-between items-end">
-            <h2 className="text-xs md:text-2xl md:w-[35ch]">
+            <h2 className="text-xs md:text-base md:w-[35ch]">
               Your go-to database for web design resources of all types. Put
               together with love by{" "}
               <Link
